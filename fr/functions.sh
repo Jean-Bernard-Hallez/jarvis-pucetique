@@ -70,9 +70,6 @@ say "veuillez commencer par la commande en disant, prochain traitement pour les 
 fi
 }
 
-jv_pg_ct_pucetique_avertiretard() {
-
-}
 
 jv_pg_ct_pucetique_prochain() {
 varchempucetique="/home/pi/jarvis/plugins_installed/jarvis-pucetique/pucetique.txt"
