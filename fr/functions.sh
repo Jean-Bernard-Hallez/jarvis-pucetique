@@ -70,7 +70,12 @@ say "veuillez commencer par la commande en disant, prochain traitement pour les 
 fi
 }
 
+jv_pg_ct_pucetique_avertiretard() {
+
+}
+
 jv_pg_ct_pucetique_prochain() {
+varchempucetique="/home/pi/jarvis/plugins_installed/jarvis-pucetique/pucetique.txt"
 On_est_le_puetique
 diff_date_puetique=$(( ($derniere_puetique_seconde - $prochain_puetique_seconde)/86400 ))
 
@@ -81,7 +86,7 @@ diff_date_puetique=$(( ($derniere_puetique_seconde - $prochain_puetique_seconde)
 
 diff_date_puetique=$(( ($prochain_puetique_seconde - $date_aujourdhui_puetique_sec )/86400 ))
 
-		if [[ "$diff_date_puetique" == "0" ]]; then say "C'est aujourd'hui qu'il faut le faire !!!"
+		if [[ "$diff_date_puetique" == "0" ]]; then say "C'est aujourd'hui qu'il faut soigner $NOMPUCETIQUE, veuillez le faire !!!"
 		ilfautraiter_puetique="oui"
 		jv_pg_ct_pucetique
 		fi
@@ -89,7 +94,7 @@ diff_date_puetique=$(( ($prochain_puetique_seconde - $date_aujourdhui_puetique_s
 		if [[ "$diff_date_puetique" -lt "0" ]]; then 
 		# en retrard de aujourd'hui moins $prochain_puetique_long
 		diff_date_puetique_retard=$(( ($date_aujourdhui_puetique_sec -  $prochain_puetique_seconde)/86400 ))
-		say "Le traitement aurai du être déja aplliqué le $prochain_puetique_long, vous êtes en retard de $diff_date_puetique_retard jours."
+		say "Le traitement pour $NOMPUCETIQUE aurai du être déja aplliqué le $prochain_puetique_long, vous êtes en retard de $diff_date_puetique_retard jours."
 		ilfautraiter_puetique="oui"
 		jv_pg_ct_pucetique
 		return
