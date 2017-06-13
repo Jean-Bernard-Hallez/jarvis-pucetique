@@ -9,9 +9,11 @@ ETAPEMOMO=$(( $ETAPEMOMO + 1 ));
 
 if [[ "$ETAPEMOMO" == "1" ]] ; then
 	if [ ! -e "$varchempucetique" ]; then #$RENOUVPUCETIQUE
-	say "Quel est le dernier jour et mois ou vous mis le $PRODUITPUCETIQUE anti puces et tiques pour la dernière fois à $NOMPUCETIQUE ?"
+	say "Quel est le dernier jour,  mois et année ou vous avez mis $PRODUITPUCETIQUE anti puces et tiques à $NOMPUCETIQUE ?"
+	return
 	fi
 jv_pg_ct_pucetique_prochain
+
 fi
 
 if [[ "$ETAPEMOMO" == "2" ]] ; then
@@ -19,6 +21,7 @@ if [[ "$ETAPEMOMO" == "2" ]] ; then
 #	say "$REPONSEMOMO, ai-je bien compris ?"; 
 	date_utilisateur_puetique=$REPONSEMOMO
 	jv_pg_ct_enreg_puetique_nouvelldate
+	return
 	fi
 
 	if [[ "$ilfautraiter_puetique" == "oui" ]]; then
@@ -35,6 +38,12 @@ if [[ "$ETAPEMOMO" == "3" ]] ; then
 		date -d $date_utilisateur_puetique "+%m/%d/%y" > $varchempucetique
 		ETAPEMOMO="0"
 		jv_pg_ct_pucetique
+		return
+		else 
+		ETAPEMOMO="0"
+		jv_pg_ct_pucetique
+		return
+
 		fi
 	fi
 	
@@ -43,6 +52,7 @@ if [[ "$ETAPEMOMO" == "3" ]] ; then
 ilfautraiter_puetique=""
 echo "$date_cycle_mois_puetique_court/$date_cycle_jour_puetique/$date_cycle_annee_puetique" > $varchempucetique
 say "Ok c'est repati pour $NOMPUCETIQUE de tranquilité"
+return
 		fi	
 	fi
 fi
@@ -51,8 +61,13 @@ fi
 
 jv_pg_ct_pucetique_dernier() {
 varchempucetique="/home/pi/jarvis/plugins_installed/jarvis-pucetique/pucetique.txt"
+derniere_puetique_long=""
+if [ -e "$varchempucetique" ]; then 
 On_est_le_puetique
-say "Le dernier traitement a été fait le $derniere_puetique_long."
+say "Le dernier traitement pour $NOMPUCETIQUE avec $PRODUITPUCETIQUE a été fait le $derniere_puetique_long."
+else
+say "veuillez commencer par la commande en disant, prochain traitement pour les puces, afin d'enregistrer la date du dernier traitement effectué."
+fi
 }
 
 jv_pg_ct_pucetique_prochain() {
@@ -107,22 +122,56 @@ prochain_puetique_seconde=`date -d "$prochain_puetique_court" "+%s"`
 }
 
 jv_pg_ct_enreg_puetique_nouvelldate() {
-date_utilisateur_puetique=`echo "$date_utilisateur_puetique" | sed -e "s/le //g" | sed -e "s/c'est //g"`
+if [[ "$date_utilisateur_puetique" =~ "aujourd" ]]; then
+date_utilisateur_puetique=`date "+%d %B %Y"`
+fi
+
+date_utilisateur_puetique=`echo "$date_utilisateur_puetique" | sed -e "s/le //g" | sed -e "s/c'est //g" | sed -e "s/1er /1 /g"`
+if [[ "`echo $date_utilisateur_puetique |  wc -w`" == "3" ]]; then
 date_utilisateur_puetique_jour=`echo "$date_utilisateur_puetique" | cut -d" " -f1`
 date_utilisateur_puetique_mois_long=`echo "$date_utilisateur_puetique" | cut -d" " -f2`
 date_utilisateur_puetique_annee=`echo "$date_utilisateur_puetique" | cut -d" " -f3`
 # echo "$date_utilisateur_puetique"
 testlemoisinverse_puetique
 testlejourinverse_puetique
+fi
+
+if [[ "$date_utilisateur_puetique_jour"  =~ [0-9] ]]; then
+ETAPEMOMO=$ETAPEMOMO
+else
+say "J'ai un problème de reconnaissance avec le jour énnoncée, veuillez reformuler"
+ETAPEMOMO="0"
+return
+fi
+
+if [[ "$date_utilisateur_puetique_mois_court" =~ [0-9] ]]; then
+ETAPEMOMO=$ETAPEMOMO
+else
+say "J'ai un problème de reconnaissance avec le mois énnoncée, veuillez reformuler"
+ETAPEMOMO="0"
+return
+fi
+
+if [[ "$date_utilisateur_puetique_annee" =~ [0-9] ]]; then
+ETAPEMOMO=$ETAPEMOMO
+else
+say "J'ai un problème de reconnaissance avec l'année énnoncée, veuillez reformuler"
+ETAPEMOMO="0"
+return
+fi
+
 if [[ "$date_utilisateur_puetique_mois_long" == "" ]]; then
 say "J'ai un problème de reconnaissance avec le mois énnoncée, veuillez reformuler"
 ETAPEMOMO="0"
 return
 fi
 
+
 if [[ "$date_utilisateur_puetique_annee" == "" ]]; then
 date_utilisateur_puetique_annee=`date "+%y"`
 fi
+
+
 
 say "vous me demandez d'enregistrer le $date_utilisateur_puetique_jour $date_utilisateur_puetique_mois_long $date_utilisateur_puetique_annee est-ce bien cela ?"
 date_utilisateur_puetique="$date_utilisateur_puetique_mois_court/$date_utilisateur_puetique_jour/$date_utilisateur_puetique_annee"
