@@ -365,3 +365,7 @@ return;
 fi
 }
 
+jv_pg_ct_aurevoirpuetique() {
+citations=("faites lui une caresse de ma part !" "soignez le bien..." "Miaou Miaou !?" "Dites lui bonjour de ma part !" "Calinez-le bien !" "Passez un agréable moment avec lui !" "faites lui un tendre câlin !" "dites lui que je l'aime autant que vous !")
+say "${citations[$RANDOM % ${#citations[@]} ]}"
+}
