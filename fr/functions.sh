@@ -72,7 +72,7 @@ if [[ "$ETAPEMOMO" == "3" ]] ; then
 ilfautraiter_puetique="";
 echo "$date_cycle_mois_puetique_court/$date_cycle_jour_puetique/$date_cycle_annee_puetique" > $varchempucetique;
 say "Ok c'est repati pour $NOMPUCETIQUE de tranquilité";
-GOTOSORTIMOMO="Fin";
+GOTOSORTIPUCETIQUE="Fin";
 return;
 		fi	
 	fi
@@ -106,10 +106,10 @@ derniere_puetique_long="";
 if [ -e "$varchempucetique" ]; then 
 On_est_le_puetique;
 say "Le dernier traitement pour $NOMPUCETIQUE avec $PRODUITPUCETIQUE a été fait le $derniere_puetique_long.";
-GOTOSORTIMOMO="Fin";
+GOTOSORTIPUCETIQUE="Fin";
 else
 say "veuillez commencer par la commande en disant, prochain traitement pour les puces, afin d'enregistrer la date du dernier traitement effectué.";
-GOTOSORTIMOMO="Fin";
+GOTOSORTIPUCETIQUE="Fin";
 fi
 }
 
@@ -147,7 +147,7 @@ diff_date_puetique=$(( ($prochain_puetique_seconde - $date_aujourdhui_puetique_s
 			jv_pg_ct_pucetique;
 			return;
 			fi
-		GOTOSORTIMOMO="Fin";
+		GOTOSORTIPUCETIQUE="Fin";
 		return;
 		fi
 

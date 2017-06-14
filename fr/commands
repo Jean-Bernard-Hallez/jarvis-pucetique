@@ -1,7 +1,7 @@
-*PROCHAIN*PUCE*|*PROCHAIN*TIQUE==if [[ "$GOTOSORTIMOMO" == "Fin" ]]; then GOTOSORTIMOMO=""; commands="$(jv_get_commands)"; jv_handle_order "GOTOSORTIMOMO"; return; else jv_pg_ct_pucetique; fi && if [[ "$GOTOSORTIMOMO" == "Fin" ]]; then GOTOSORTIMOMO=""; commands="$(jv_get_commands)"; jv_handle_order "GOTOSORTIMOMO"; return; fi
+*PROCHAIN*PUCE*|*PROCHAIN*TIQUE==if [[ "$GOTOSORTIPUCETIQUE" == "Fin" ]]; then GOTOSORTIPUCETIQUE=""; commands="$(jv_get_commands)"; jv_handle_order "GOTOSORTIPUCETIQUE"; return; else jv_pg_ct_pucetique; fi && if [[ "$GOTOSORTIPUCETIQUE" == "Fin" ]]; then GOTOSORTIPUCETIQUE=""; commands="$(jv_get_commands)"; jv_handle_order "GOTOSORTIPUCETIQUE"; return; fi
 >*ANNUL*==say "Ok annulation"; commands="$(jv_get_commands)"; jv_handle_order "GOTOSORTI_MOMO"; return;
->(*)==if [[ "$GOTOSORTIMOMO" == "Fin" ]]; then GOTOSORTIMOMO=""; commands="$(jv_get_commands)"; jv_handle_order "GOTOSORTI_MOMO"; return; else REPONSEMOMO="$order"; commands="$(jv_get_commands)"; jv_handle_order "prochaine puce "; return; fi
-GOTOSORTIMOMO==jv_pg_ct_pucetiqueazero; jv_pg_ct_aurevoirpuetique;
+>(*)==if [[ "$GOTOSORTIPUCETIQUE" == "Fin" ]]; then GOTOSORTIPUCETIQUE=""; commands="$(jv_get_commands)"; jv_handle_order "GOTOSORTI_MOMO"; return; else REPONSEMOMO="$order"; commands="$(jv_get_commands)"; jv_handle_order "prochaine puce "; return; fi
+GOTOSORTIPUCETIQUE==jv_pg_ct_pucetiqueazero; jv_pg_ct_aurevoirpuetique;
 
 *DERNIER*PUCE*|*DERNIER*TIQUE==jv_pg_ct_pucetique_dernier; jv_pg_ct_aurevoirpuetique; return; 
 
