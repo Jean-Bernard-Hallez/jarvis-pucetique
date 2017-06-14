@@ -1,8 +1,8 @@
-*PROCHAIN*PUCE*|*PROCHAIN*TIQUE==if [[ "$GOTOSORTIMOMO" == "Fin" ]]; then GOTOSORTIMOMO=""; commands="$(jv_get_commands)"; jv_handle_order "GOTOSORTI_MOMO"; return; else jv_pg_ct_pucetique; fi
+*PROCHAIN*PUCE*|*PROCHAIN*TIQUE==if [[ "$GOTOSORTIMOMO" == "Fin" ]]; then GOTOSORTIMOMO=""; commands="$(jv_get_commands)"; jv_handle_order "GOTOSORTIMOMO"; return; else jv_pg_ct_pucetique; fi && if [[ "$GOTOSORTIMOMO" == "Fin" ]]; then GOTOSORTIMOMO=""; commands="$(jv_get_commands)"; jv_handle_order "GOTOSORTIMOMO"; return; fi
 >*ANNUL*==say "Ok annulation"; commands="$(jv_get_commands)"; jv_handle_order "GOTOSORTI_MOMO"; return;
 >(*)==if [[ "$GOTOSORTIMOMO" == "Fin" ]]; then GOTOSORTIMOMO=""; commands="$(jv_get_commands)"; jv_handle_order "GOTOSORTI_MOMO"; return; else REPONSEMOMO="$order"; commands="$(jv_get_commands)"; jv_handle_order "prochaine puce "; return; fi
-GOTOSORTI_MOMO==say "Je suis sorti..."
+GOTOSORTIMOMO==say "Au revoir."; jv_pg_ct_pucetiqueazero; 
 
+*DERNIER*PUCE*|*DERNIER*TIQUE==jv_pg_ct_pucetique_dernier; return; 
 
-*DERNIER*PUCE*|*DERNIER*TIQUE==jv_pg_ct_pucetique_dernier
-
+AVERTIRPUCEPIQUERETARD==jv_pg_ct_pucetique_prochain; return; 

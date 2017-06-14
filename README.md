@@ -22,7 +22,7 @@ you: Prochain traitement pour les puces ? (ou tique)
 jarvis: Le Prochain traitement pour whily doit être le vendredi 23 juin 2017 soit dans 9 jours.
 
 you: Quel est le dernier traitement fait pour les puces ? (ou tique) 
-jarvis: Le dernier traitement a été fait le mardi 13 juin 2017
+jarvis: Le dernier traitement pour Whily a été fait le mardi 13 juin 2017
 
 ## Author
 [JB](https://github.com/Jean-Bernard-Hallez/jarvis-pucetique)
