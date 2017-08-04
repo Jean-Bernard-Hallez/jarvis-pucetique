@@ -71,7 +71,7 @@ if [[ "$ETAPEMOMO" == "3" ]] ; then
 		if [[ "$REPONSEMOMO" =~ "oui" ]]; then 
 ilfautraiter_puetique="";
 echo "$date_cycle_mois_puetique_court/$date_cycle_jour_puetique/$date_cycle_annee_puetique" > $varchempucetique;
-say "Ok c'est repati pour $NOMPUCETIQUE de tranquilité";
+say "Le traitement de $NOMPUCETIQUE,est reparti pour $RENOUVPUCETIQUE jour de tranquilité";
 GOTOSORTIPUCETIQUE="Fin";
 return;
 		fi	
